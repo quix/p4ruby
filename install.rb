@@ -306,6 +306,7 @@ class Installer
   end
 
   def build
+    puts "building..."
     rm_rf(BUILD_DIR)
     mkdir_p(BUILD_DIR)
 
@@ -334,6 +335,7 @@ class Installer
   end
 
   def install
+    puts "installing..."
     Dir.chdir(@s.p4ruby_build_dir) {
       make("install")
     }
@@ -343,6 +345,7 @@ class Installer
   end
 
   def verify_install(on_error = nil)
+    puts "verifying..."
     files =
       if @s.gem_config
         GEM_INSTALL_FILES
@@ -376,11 +379,12 @@ class Installer
     fetch_spec(spec)
 
     error = lambda {
-      puts "The Perforce Windows P4Ruby installer failed!"
-      puts "Re-run it manually here: "
+      puts "The Perforce P4Ruby Windows installer failed!"
+      puts "You may re-run it manually here:"
       puts spec.local.expand_path
     }
 
+    puts "running Perforce P4Ruby Windows installer..."
     if system(spec.local, "/S", "/v/qn")
       if @s.gem_config
         sleep(1)
@@ -388,7 +392,7 @@ class Installer
         sleep(1)
         unless system(spec.local, "/V", "/x", "/S", "/v/qn")
           # We don't much care if this fails; just write to the log
-          puts "Note: the Perforce Windows P4Ruby uninstaller failed."
+          puts "Note: the Perforce P4Ruby Windows uninstaller failed."
         end
       end
       verify_install(error)
