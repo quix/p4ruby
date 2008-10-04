@@ -1,7 +1,7 @@
 
 Gem::Specification.new { |t| 
   t.name = "p4ruby"
-  t.version = "1.0.5"
+  t.version = "1.0.6"
   t.summary = "Ruby interface to the Perforce API"
   t.author = "Perforce Software (ruby gem by James M. Lawrence)"
   t.email = "quixoticsycophant@gmail.com"
