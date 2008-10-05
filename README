@@ -11,8 +11,9 @@ Or if you are installing from the regular (non-gem) package,
 
   % ruby install.rb
 
-This downloads P4Ruby and the Perforce API, compiles P4Ruby, and
-installs it.  Some options are available,
+This installer downloads P4Ruby and the Perforce API, compiles P4Ruby,
+and installs it.  On Windows the Perforce P4Ruby Windows installer is
+downloaded and executed instead.  Some options are available,
 
   % ruby install.rb --help
 
@@ -23,15 +24,16 @@ installs it.  Some options are available,
     --list-platforms     List available platforms for the given version.
     --gem                Gem configuration (for the gem installer).
     --uninstall          Uninstall.
-    --local              Use the local files in work/distfiles (for manual download)
+    --local              Use the files in work/distfiles (manual download).
 
 == Links
 
-* Download (this installer only): http://rubyforge.org/frs/?group_id=6957
-* Simplified wrapper for P4Ruby: http://perforce.rubyforge.org
 * P4Ruby documentation 2008.1: http://perforce.com/perforce/doc.081/manuals/p4script/p4script.pdf
 * Perforce documentation: http://perforce.com/perforce/technical.html
+
+* Download (this installer only): http://rubyforge.org/frs/?group_id=6957
 * Repository (this installer only): http://github.com/quix/p4ruby
+* Simplified wrapper for P4Ruby: http://perforce.rubyforge.org
 
 == Credits
 

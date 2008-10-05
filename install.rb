@@ -79,7 +79,7 @@ class Installer
       }
       parser.on(
         "--local",
-        "Use the local files in work/distfiles (for manual download)") {
+        "Use the files in work/distfiles (manual download).") {
         @s.local = true
       }
       parser.parse(ARGV)
