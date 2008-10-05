@@ -3,9 +3,9 @@ require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/contrib/rubyforgepublisher'
 
-gemspec = eval(File.read("p4ruby.gemspec"))
-installer = './install.rb'
-readme = "README"
+INSTALLER = './install.rb'
+README = "README"
+GEMSPEC = eval(File.read("p4ruby.gemspec"))
 
 #
 # default task compiles for the gem
@@ -13,11 +13,11 @@ readme = "README"
 task :default do
   ARGV.clear
   ARGV.push "--gem"
-  load installer
+  load INSTALLER
 end
 
 task :clean => :clobber do
-  rm_rf ["work", "lib/P4.rb", "ext", "html"]
+  rm_rf ["work", "lib", "ext"]
 end
 
 task :update_docs do
@@ -26,11 +26,11 @@ task :update_docs do
     Config::CONFIG["RUBY_INSTALL_NAME"])
 
   help = "--help"
-  command = "ruby #{File.basename(installer)} #{help}"
-  output = `#{ruby_path} #{installer} #{help}`
+  command = "ruby #{File.basename(INSTALLER)} #{help}"
+  output = `#{ruby_path} #{INSTALLER} #{help}`
 
   # insert help output into README
-  replace_file(readme) { |contents|
+  replace_file(README) { |contents|
     contents.sub(%r!#{command}.*?==!m) {
       command + "\n\n  " +
       output + "\n=="
@@ -45,13 +45,13 @@ task :package => [:clean, :doc]
 task :gem => :clean
 
 Rake::RDocTask.new { |t|
-  t.main = readme
-  t.rdoc_files.include([readme])
+  t.main = README
+  t.rdoc_files.include([README])
   t.rdoc_dir = "html"
-  t.title = "P4Ruby: #{gemspec.summary}"
+  t.title = "P4Ruby: #{GEMSPEC.summary}"
 }
 
-Rake::GemPackageTask.new(gemspec) { |t| 
+Rake::GemPackageTask.new(GEMSPEC) { |t| 
   t.need_tar = true 
 } 
 

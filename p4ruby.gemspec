@@ -11,21 +11,18 @@ Gem::Specification.new { |t|
   t.add_dependency "rake"
   t.require_paths << "ext"
 
-  t.files = %w{
+  t.files = %w[
     README
     Rakefile
     install.rb
     p4ruby.gemspec
-  }
+  ]
 
-  rdoc_exclude = %w{
-    P4.rb
-    install\.rb
-  }
   t.has_rdoc = true
   t.extra_rdoc_files = ["README"]
-  t.rdoc_options += ["--title", "P4Ruby: #{t.summary}"] +
-    %w{--main README} +
+  rdoc_exclude = t.files - t.extra_rdoc_files
+  t.rdoc_options +=
+    ["--title", "P4Ruby: #{t.summary}", "--main", "README"] +
     rdoc_exclude.inject(Array.new) { |acc, pattern|
       acc + ["--exclude", pattern]
     }
