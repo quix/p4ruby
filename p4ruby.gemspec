@@ -8,6 +8,7 @@ Gem::Specification.new { |t|
   t.homepage = "p4ruby.rubyforge.org"
   t.rubyforge_project = "p4ruby"
   t.extensions << "Rakefile"
+  t.add_dependency "rake"
   t.require_paths << "ext"
 
   t.files = %w{
