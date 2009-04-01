@@ -148,7 +148,7 @@ class Installer
       @s.version_dir + "bin.#{@s.platform}" + @s.p4api.basename
     }
     @s.p4ruby.attribute(:remote) {
-      @s.version_dir + "tools" + @s.p4ruby.basename
+      @s.version_dir + "bin.tools" + @s.p4ruby.basename
     }
 
     @s.attribute(:ftp) {
