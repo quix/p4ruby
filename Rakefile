@@ -2,19 +2,29 @@
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/contrib/rubyforgepublisher'
+require 'fileutils'
 
-INSTALLER = './install.rb'
+include FileUtils
+
 README = "README"
 GEMSPEC = eval(File.read("p4ruby.gemspec"))
+RAKEFILE = "Rakefile"
+RAKEFILE_ORIG = "Rakefile.orig"
 
-#
-# default task compiles for the gem
-#
-task :default do
-  ARGV.clear
-  ARGV.push "--gem"
-  load INSTALLER
-end
+default_task_definition = %{
+  INSTALLER = './install.rb'
+
+  #
+  # default task compiles for the gem
+  #
+  task :default do
+    ARGV.clear
+    ARGV.push "--gem"
+    load INSTALLER
+  end
+}
+
+eval(default_task_definition)
 
 task :clean => :clobber do
   rm_rf ["work", "lib", "ext"]
@@ -59,7 +69,17 @@ task :publish => :doc do
   Rake::RubyForgePublisher.new('p4ruby', 'quix').upload
 end
 
-task :release => [:package, :publish]
+task :release do
+  mv(RAKEFILE, RAKEFILE_ORIG)
+  begin
+    File.open(RAKEFILE, "w") { |out|
+      out.puts default_task_definition.gsub(%r!^  !m, "")
+    }
+    Rake::Task[:package].invoke
+  ensure
+    mv(RAKEFILE_ORIG, RAKEFILE)
+  end
+end
 
 ##################################################
 # util
