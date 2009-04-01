@@ -1,0 +1,11 @@
+
+= p4ruby
+
+== version 1.0.8
+
+* Compensate for Perforce ftp server directory changes
+
+== version 1.0.7
+
+* First release.
+

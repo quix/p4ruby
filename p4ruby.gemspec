@@ -1,7 +1,7 @@
 
 Gem::Specification.new { |t| 
   t.name = "p4ruby"
-  t.version = "1.0.7"
+  t.version = "1.0.8"
   t.summary = "Ruby interface to the Perforce API"
   t.author = "Perforce Software (ruby gem by James M. Lawrence)"
   t.email = "quixoticsycophant@gmail.com"
@@ -13,6 +13,7 @@ Gem::Specification.new { |t|
 
   t.files = %w[
     README
+    CHANGES
     Rakefile
     install.rb
     p4ruby.gemspec
