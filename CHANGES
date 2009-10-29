@@ -1,6 +1,11 @@
 
 = p4ruby
 
+== version 1.0.9
+
+* Non-universal p4api darwin libs were removed from Perforce ftp server
+* Pathname changes for 1.9 (even though P4Ruby does not compile for 1.9)
+
 == version 1.0.8
 
 * Compensate for Perforce ftp server directory changes
