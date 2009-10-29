@@ -160,17 +160,22 @@ class Installer
   end
 
   def guess_cpu
-    case CONFIG["target_cpu"]
-    when %r!ia!i
-      "ia64"
-    when %r!86!
-      # note: with '_'
-      "x86" + (BIT64 ? "_64" : "")
-    when %r!(ppc|sparc)!i
-      # note: without '_'
-      $1 + (BIT64 ? "64" : "")
+    if CONFIG["target_os"] =~ %r!darwin!
+      # specific binaries were removed in p4api-09.1
+      "u"
     else
-      ""
+      case CONFIG["target_cpu"]
+      when %r!ia!i
+        "ia64"
+      when %r!86!
+        # note: with '_'
+        "x86" + (BIT64 ? "_64" : "")
+      when %r!(ppc|sparc)!i
+        # note: without '_'
+        $1 + (BIT64 ? "64" : "")
+      else
+        ""
+      end
     end
   end
 
