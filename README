@@ -28,7 +28,7 @@ downloaded and executed instead.  Some options are available,
 
 == Links
 
-* P4Ruby documentation 2008.1: http://perforce.com/perforce/doc.081/manuals/p4script/p4script.pdf
+* P4Ruby documentation 2009.1: http://perforce.com/perforce/doc.091/manuals/p4script/p4script.pdf
 * Perforce documentation: http://perforce.com/perforce/technical.html
 
 * Download (this installer only): http://rubyforge.org/frs/?group_id=6957
@@ -67,8 +67,12 @@ downloaded and executed instead.  Some options are available,
 === Installer and Gem
  
  This ruby package (install.rb and associated files) was written by
- James M. Lawrence, Copyright (c) 2008 ImaginEngine, Inc.  Distributed
- under the MIT license.
+ James M. Lawrence.
+
+ Copyright (c) 2009 James M. Lawrence
+ Copyright (c) 2008 ImaginEngine, Inc.
+
+ Distributed under the MIT license.
  
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the
