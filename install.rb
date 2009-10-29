@@ -254,14 +254,14 @@ class Installer
   end
 
   def unpack(distfile, target_dir)
-    sys("tar", "zxvf", distfile, "-C", target_dir)
+    sys("tar", "zxvf", distfile.to_s, "-C", target_dir.to_s)
   end
 
   def fetch_spec(spec)
     unless @s.local
       mkdir_p(spec.local.dirname)
       puts "downloading ftp://#{SERVER}/#{spec.remote} ..."
-      @s.ftp.getbinaryfile(spec.remote, spec.local)
+      @s.ftp.getbinaryfile(spec.remote.to_s, spec.local.to_s)
     end
   end
 
@@ -272,7 +272,7 @@ class Installer
   end
 
   def remote_files_matching(dir, regex)
-    @s.ftp.ls(dir).map { |entry|
+    @s.ftp.ls(dir.to_s).map { |entry|
       if match = entry.match(regex)
         yield match
       else
@@ -307,7 +307,7 @@ class Installer
 
   def ruby(*args)
     exe = Pathname.new(CONFIG["bindir"]) + CONFIG["RUBY_INSTALL_NAME"]
-    sys(exe, *args)
+    sys(exe.to_s, *args)
   end
 
   def build
