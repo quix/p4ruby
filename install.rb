@@ -326,8 +326,7 @@ class Installer
   end
 
   def raw_install_to_gem_install
-    RAW_INSTALL_FILES.each_with_index { |source, index|
-      dest = GEM_INSTALL_FILES[index]
+    RAW_INSTALL_FILES.zip(GEM_INSTALL_FILES) { |source, dest|
       mkdir_p(dest.dirname)
       puts "move #{source} --> #{dest}"
       mv(source, dest)
