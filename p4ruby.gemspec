@@ -5,7 +5,7 @@ Gem::Specification.new { |t|
   t.summary = "Ruby interface to the Perforce API"
   t.author = "Perforce Software (ruby gem by James M. Lawrence)"
   t.email = "quixoticsycophant@gmail.com"
-  t.homepage = "p4ruby.rubyforge.org"
+  t.homepage = "http://p4ruby.rubyforge.org"
   t.rubyforge_project = "p4ruby"
   t.extensions << "Rakefile"
   t.add_dependency "rake"
