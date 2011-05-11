@@ -31,6 +31,9 @@ class Installer
   SERVER = "ftp.perforce.com"
   SERVER_TOP_DIR = Pathname.new "perforce"
 
+  # Mysterious "ghost" releases which lack files
+  HOSED_VERSIONS = %w[09.3 11.1]
+
   P4API_REMOTE_BASENAME = Pathname.new "p4api.tgz"
   P4RUBY_REMOTE_BASENAME = Pathname.new "p4ruby.tgz"
 
@@ -290,6 +293,8 @@ class Installer
   def versions
     remote_files_matching(SERVER_TOP_DIR, %r!r([0-8]\d\.\d)!) { |match|
       match.captures.first
+    }.reject { |version|
+      HOSED_VERSIONS.include? version
     }.sort
   end
 
