@@ -9,10 +9,6 @@ require 'fileutils'
 require 'optparse'
 require 'pathname'
 
-def main
-  Installer.new.run
-end
-
 class Installer
   include FileUtils
 
@@ -475,4 +471,4 @@ module Kernel
   end
 end
 
-main
+Installer.new.run
