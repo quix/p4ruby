@@ -1,8 +1,9 @@
 
 Gem::Specification.new { |t| 
   t.name = "p4ruby"
-  t.version = "1.0.9"
+  t.version = "1.0.11"
   t.summary = "Ruby interface to the Perforce API"
+  t.description = t.summary + "."
   t.author = "Perforce Software (ruby gem by James M. Lawrence)"
   t.email = "quixoticsycophant@gmail.com"
   t.homepage = "http://p4ruby.rubyforge.org"
@@ -19,7 +20,6 @@ Gem::Specification.new { |t|
     p4ruby.gemspec
   ]
 
-  t.has_rdoc = true
   t.extra_rdoc_files = ["README"]
   rdoc_exclude = t.files - t.extra_rdoc_files
   t.rdoc_options +=
