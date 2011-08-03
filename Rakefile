@@ -1,6 +1,12 @@
 
-require 'rake/gempackagetask'
-require 'rake/rdoctask'
+begin
+  require 'rubygems'
+  gem 'rdoc'
+rescue LoadError
+end
+
+require 'rubygems/package_task'
+require 'rdoc/task'
 require 'rake/contrib/rubyforgepublisher'
 require 'fileutils'
 
@@ -54,14 +60,14 @@ task :doc => :rdoc
 task :package => [:clean, :doc]
 task :gem => :clean
 
-Rake::RDocTask.new { |t|
+RDoc::Task.new { |t|
   t.main = README
   t.rdoc_files.include([README])
   t.rdoc_dir = "html"
   t.title = "P4Ruby: #{GEMSPEC.summary}"
 }
 
-Rake::GemPackageTask.new(GEMSPEC) { |t| 
+Gem::PackageTask.new(GEMSPEC) { |t| 
   t.need_tar = true 
 } 
 
