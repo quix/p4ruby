@@ -1,6 +1,14 @@
 
 = p4ruby
 
+== version 1.0.11
+
+* remove previous workaround; now uses list of hosed versions to avoid
+
+== version 1.0.10
+
+* perforce ftp site has hosed 11.1 directory -- workaround hardcoded for 10.2
+
 == version 1.0.9
 
 * Non-universal p4api darwin libs were removed from Perforce ftp server
