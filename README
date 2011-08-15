@@ -18,7 +18,7 @@ downloaded and executed instead.  Some options are available,
   % ruby install.rb --help
 
   Usage: ruby install.rb [options]
-    --version NN.N       Version to download, e.g. 08.1. Default finds latest.
+    --version NN.N       Version to download, e.g. 10.2. Default finds latest.
     --list-versions      List available versions.
     --platform PLATFORM  Perforce-named platform to download. Default guesses.
     --list-platforms     List available platforms for the given version.
@@ -28,10 +28,9 @@ downloaded and executed instead.  Some options are available,
 
 == Links
 
-* P4Ruby documentation 2009.1: http://perforce.com/perforce/doc.091/manuals/p4script/p4script.pdf
+* P4Ruby documentation: http://www.perforce.com/perforce/doc.current/manuals/p4script/p4script.pdf
 * Perforce documentation: http://perforce.com/perforce/technical.html
-
-* Download (this installer only): http://rubyforge.org/frs/?group_id=6957
+* Manual Download (this installer only): http://github.com/quix/p4ruby/archives/master
 * Repository (this installer only): http://github.com/quix/p4ruby
 * Simplified wrapper for P4Ruby: http://perforce.rubyforge.org
 

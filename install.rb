@@ -46,7 +46,7 @@ class Installer
       |parser|
       parser.on(
         "--version NN.N",
-        "Version to download, e.g. 08.1. Default finds latest.") {
+        "Version to download, e.g. 10.2. Default finds latest.") {
         |version|
         @s.version = version
       }
