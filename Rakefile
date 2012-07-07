@@ -38,8 +38,8 @@ end
 
 task :update_docs do
   ruby_path = File.join(
-    Config::CONFIG["bindir"],
-    Config::CONFIG["RUBY_INSTALL_NAME"])
+    RbConfig::CONFIG["bindir"],
+    RbConfig::CONFIG["RUBY_INSTALL_NAME"])
 
   help = "--help"
   command = "ruby #{File.basename(INSTALLER)} #{help}"

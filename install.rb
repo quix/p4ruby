@@ -12,7 +12,7 @@ require 'pathname'
 class Installer
   include FileUtils
 
-  CONFIG = Config::CONFIG
+  CONFIG = RbConfig::CONFIG
   BIT64 = (1.size == 8)
 
   RB_BASENAME = Pathname.new "P4.rb"
