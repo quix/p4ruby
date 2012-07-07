@@ -29,12 +29,17 @@ class Installer
   ]
 
   SERVER = "ftp.perforce.com"
-  SERVER_TOP_DIR = Pathname.new "perforce"
+  SERVER_TOP_DIR = Pathname.new "pub/perforce"
 
   # Mysterious "ghost" releases which lack files
-  HOSED_VERSIONS = %w[09.3 11.1]
+  HOSED_VERSIONS = %w[09.3 11.1 12.2]
 
-  P4API_REMOTE_BASENAME = Pathname.new "p4api.tgz"
+  if RUBY_PLATFORM == 'i386-mingw32'
+    P4API_REMOTE_BASENAME = Pathname.new "p4api.zip"
+  else
+    P4API_REMOTE_BASENAME = Pathname.new "p4api.tgz"
+  end
+
   P4RUBY_REMOTE_BASENAME = Pathname.new "p4ruby.tgz"
 
   WORK_DIR = Pathname.new "work"
@@ -199,6 +204,8 @@ class Installer
 
     if config_os =~ %r!cygwin!i
       "cygwin" + windows_cpu
+    elsif (config_os =~ %r!mingw!i) && (CONFIG["MAJOR"].to_i == 1) && (CONFIG["MINOR"].to_i == 9)
+      "mingw" + windows_cpu
     elsif config_os =~ %r!(mswin|mingw)!i
       "nt" + windows_cpu
     elsif @s.local
@@ -253,7 +260,11 @@ class Installer
   end
 
   def unpack(distfile, target_dir)
-    sys("tar", "zxvf", distfile.to_s, "-C", target_dir.to_s)
+    if File.extname(distfile.to_s).downcase == '.zip'
+      sys('unzip', distfile.to_s, '-d', target_dir.to_s)
+    else
+      sys("tar", "zxvf", distfile.to_s, "-C", target_dir.to_s)
+    end
   end
 
   def fetch_spec(spec)
